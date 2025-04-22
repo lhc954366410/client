@@ -1,11 +1,13 @@
 // 运行时配置
+import { message } from 'antd/es';
 import type { RequestConfig } from 'umi';
 
 export const request: RequestConfig = {
   timeout: 1000,
   // other axios options you want
   errorConfig: {
-    errorHandler(){
+    errorHandler(response){
+      message.error(response.message);
     },
     errorThrower(){
     }
@@ -21,11 +23,10 @@ export const request: RequestConfig = {
   }],
   responseInterceptors: [
     (response) => {
-      // console.log('response interceptor', response);
-      if (response.status === 200) {
-        return response;
-      }
-      throw new Error('请求失败');
+      //这里统一处理后端报错
+
+
+      return response;
     }
   ]
 };

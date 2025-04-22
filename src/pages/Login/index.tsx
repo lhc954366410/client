@@ -46,7 +46,7 @@ const LoginPage = () => {
       <div style={{ width: '392px', margin: '0 auto' }}>
         <LoginForm
           title="管理系统"
-          subTitle="欢迎使用管理系统"
+          // subTitle="欢迎使用管理系统"
           onFinish={handleSubmit}
           logo={<img alt="logo" src="https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg" />}
         >
@@ -65,7 +65,7 @@ const LoginPage = () => {
               size: 'large',
               prefix: <UserOutlined />,
             }}
-            placeholder="用户名: admin or user"
+            placeholder="用户名"
             rules={[
               {
                 required: true,
@@ -79,7 +79,7 @@ const LoginPage = () => {
               size: 'large',
               prefix: <LockOutlined />,
             }}
-            placeholder="密码: ant.design"
+            placeholder="密码"
             rules={[
               {
                 required: true,

@@ -21,6 +21,12 @@ export default defineConfig({
       layout: false,
     },
     {
+      name: '注册',
+      path: '/register',
+      component: './Register',
+      layout: false,
+    },
+    {
       name: '首页',
       path: '/home',
       component: './Home',
