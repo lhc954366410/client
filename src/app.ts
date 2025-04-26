@@ -18,7 +18,7 @@ export const request: RequestConfig = {
       ...options.headers,
       'Content-Type': 'application/json',
     }    
-    return { url:'http://localhost:3000' + url, options }
+    return { url:'http://localhost:3000/api' + url, options }
 
   }],
   responseInterceptors: [
