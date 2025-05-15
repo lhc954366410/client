@@ -6,32 +6,33 @@ export const request: RequestConfig = {
   timeout: 1000,
   // other axios options you want
   errorConfig: {
-    errorHandler(response){
+    errorHandler(response) {
       message.error(response.message);
     },
-    errorThrower(){
-    }
+    errorThrower() {},
   },
-  requestInterceptors: [(url, options )=>{
-    // console.log('request interceptor', url, options);
-    options.headers = {
-      ...options.headers,
-      'Content-Type': 'application/json',
-    }    
-    return { url:'http://localhost:3000/api' + url, options }
-
-  }],
+  requestInterceptors: [
+    (url, options) => {
+      // console.log('request interceptor', url, options);
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      options.headers = {
+        ...options.headers,
+        'Content-Type': 'application/json',
+        authorizationtoken: user.token,
+      };
+      return { url: 'http://localhost:3000/api' + url, options };
+    },
+  ],
   responseInterceptors: [
     (response) => {
       //这里统一处理后端报错
-      if(response.data.code !== 200){
-        message.error(response.data.message);
-      }
-      
+      // if (response.data.code !== 200) {
+      //   message.error(response.data.message);
+      // }
 
       return response;
-    }
-  ]
+    },
+  ],
 };
 
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化

@@ -15,11 +15,11 @@ const LoginPage = () => {
         email: values.email,
         password: values.password,
       },
-
-    })
+    });
     if (res.code === 200) {
+      localStorage.setItem('user', JSON.stringify(res.data));
       message.success('登录成功');
-      navigate('/'); 
+      navigate('/');
     }
   };
 
@@ -37,11 +37,14 @@ const LoginPage = () => {
         backgroundSize: '100%',
       }}
     >
-      <div style={{
-        width: '392px',
-        margin: '0 auto',
-        boxShadow: '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09) '
-      }}>
+      <div
+        style={{
+          width: '392px',
+          margin: '0 auto',
+          boxShadow:
+            '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09) ',
+        }}
+      >
         <LoginForm
           title="达美"
           // subTitle="欢迎使用管理系统"
