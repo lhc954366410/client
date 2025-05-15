@@ -24,7 +24,10 @@ export const request: RequestConfig = {
   responseInterceptors: [
     (response) => {
       //这里统一处理后端报错
-
+      if(response.data.code !== 200){
+        message.error(response.data.message);
+      }
+      
 
       return response;
     }

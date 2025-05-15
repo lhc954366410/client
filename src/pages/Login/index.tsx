@@ -2,30 +2,24 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormText } from '@ant-design/pro-components';
 import { message, Tabs, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import {request} from 'umi';
+import { request } from 'umi';
+
 const LoginPage = () => {
   const { token } = theme.useToken();
   const navigate = useNavigate();
 
-  const handleSubmit = async (values:any) => {
-    console.log('Received values of form: ', values);
-    try {
-        request('/login', {
-            method: 'POST',
-            data: {
-                username: values.username,
-                password: values.password,
-            },
+  const handleSubmit = async (values: any) => {
+    let res = await request('/login', {
+      method: 'POST',
+      data: {
+        email: values.email,
+        password: values.password,
+      },
 
-        }).then((res) => {
-            console.log("----",res);
-            
-        })
-
-
-
-    } catch (error) {
-      message.error('登录失败，请重试！');
+    })
+    if (res.code === 200) {
+      message.success('登录成功');
+      navigate('/'); 
     }
   };
 
@@ -37,18 +31,22 @@ const LoginPage = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundImage: 'url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg)',
+        backgroundImage: `url(/login_bg.svg)`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center 110px',
         backgroundSize: '100%',
       }}
     >
-      <div style={{ width: '392px', margin: '0 auto' }}>
+      <div style={{
+        width: '392px',
+        margin: '0 auto',
+        boxShadow: '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09) '
+      }}>
         <LoginForm
-          title="管理系统"
+          title="达美"
           // subTitle="欢迎使用管理系统"
           onFinish={handleSubmit}
-          logo={<img alt="logo" src="https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg" />}
+          logo={<img alt="logo" src="/logo.svg" />}
         >
           <Tabs
             centered
@@ -60,16 +58,16 @@ const LoginPage = () => {
             ]}
           />
           <ProFormText
-            name="username"
+            name="email"
             fieldProps={{
               size: 'large',
               prefix: <UserOutlined />,
             }}
-            placeholder="用户名"
+            placeholder="邮箱"
             rules={[
               {
                 required: true,
-                message: '请输入用户名!',
+                message: '请输入邮箱!',
               },
             ]}
           />
