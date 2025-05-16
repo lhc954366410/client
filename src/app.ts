@@ -1,6 +1,7 @@
 // 运行时配置
 import { message } from 'antd/es';
 import type { RequestConfig } from 'umi';
+import showError from './utils/showError';
 
 export const request: RequestConfig = {
   timeout: 1000,
@@ -26,9 +27,9 @@ export const request: RequestConfig = {
   responseInterceptors: [
     (response) => {
       //这里统一处理后端报错
-      // if (response.data.code !== 200) {
-      //   message.error(response.data.message);
-      // }
+      if (response.data.code !== 200) {
+        showError(response.data);
+      }
 
       return response;
     },

@@ -80,9 +80,9 @@ const LoginPage = () => {
                   message: '请输入用户名!',
                 },
                 {
-                  min: 4,
+                  min: 2,
                   max: 16,
-                  message: '用户名长度为4-16个字符',
+                  message: '用户名长度为2-16个字符',
                 },
               ]}
             />
