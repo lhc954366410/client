@@ -4,7 +4,7 @@ import type { RequestConfig } from 'umi';
 import showError from './utils/showError';
 
 export const request: RequestConfig = {
-  timeout: 1000,
+  timeout: 1000 * 60 * 60,
   // other axios options you want
   errorConfig: {
     errorHandler(response) {
