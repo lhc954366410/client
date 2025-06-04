@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { request } from 'umi';
 
 const LoginPage = () => {
+  const email = localStorage.getItem("email")||""
   const { token } = theme.useToken();
   const navigate = useNavigate();
 
@@ -18,6 +19,7 @@ const LoginPage = () => {
     });
     if (res.code === 200) {
       localStorage.setItem('user', JSON.stringify(res.data));
+      localStorage.setItem("email",res.data.email)
       message.success('登录成功');
       navigate('/');
     }
@@ -66,6 +68,7 @@ const LoginPage = () => {
               size: 'large',
               prefix: <UserOutlined />,
             }}
+            initialValue={email}
             placeholder="邮箱"
             rules={[
               {
@@ -80,6 +83,7 @@ const LoginPage = () => {
               size: 'large',
               prefix: <LockOutlined />,
             }}
+            // initialValue="111111"
             placeholder="密码"
             rules={[
               {
