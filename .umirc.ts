@@ -41,6 +41,11 @@ export default defineConfig({
       path: '/table',
       component: './Table',
     },
+    {
+      name: '文章分类',
+      path: '/category',
+      component: './Category',
+    },
   ],
   npmClient: 'yarn',
 });
