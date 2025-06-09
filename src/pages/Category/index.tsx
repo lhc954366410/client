@@ -160,7 +160,10 @@ const TableList: React.FC<unknown> = () => {
           };
         }}
         columns={columns}
-
+        pagination={{
+          pageSize: 10,
+          onChange: (page) => console.log(page),
+        }}
       />
       <CreateForm
         onCancel={() =>{ handleModalVisible(false);setCurrentItem(null) }}
