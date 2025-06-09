@@ -156,6 +156,7 @@ const TableList: React.FC<unknown> = () => {
           return {
             data: data?.list || [],
             success: code == 200,
+            total:data.total||0
           };
         }}
         columns={columns}
