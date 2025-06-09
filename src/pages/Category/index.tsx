@@ -115,6 +115,8 @@ const TableList: React.FC<unknown> = () => {
   useEffect(() => {
     if(createModalVisible && currentItem){
       editFormRef.current?.setFieldsValue(currentItem)
+    }else if(createModalVisible){
+      editFormRef.current?.resetFields()
     }
   }, [createModalVisible])
   
@@ -160,7 +162,7 @@ const TableList: React.FC<unknown> = () => {
 
       />
       <CreateForm
-        onCancel={() =>{ handleModalVisible(false);editFormRef.current?.resetFields() }}
+        onCancel={() =>{ handleModalVisible(false);setCurrentItem(null) }}
         modalVisible={createModalVisible}
       >
         <ProTable
