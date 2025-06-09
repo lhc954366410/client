@@ -160,7 +160,7 @@ const TableList: React.FC<unknown> = () => {
 
       />
       <CreateForm
-        onCancel={() => handleModalVisible(false)}
+        onCancel={() =>{ handleModalVisible(false);editFormRef.current?.resetFields() }}
         modalVisible={createModalVisible}
       >
         <ProTable
