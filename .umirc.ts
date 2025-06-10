@@ -46,7 +46,11 @@ export default defineConfig({
       path: '/category',
       component: './Category',
     },
+    {
+      name: '新增文章',
+      path: '/article/add',
+      component: './Article/edit',
+    },
   ],
   npmClient: 'yarn',
 });
-

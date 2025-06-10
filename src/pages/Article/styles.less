@@ -1,0 +1,64 @@
+// 自定义编辑器样式
+.w-e-full-screen-container {
+  z-index: 9999;
+}
+
+.w-e-text-container {
+  .w-e-text {
+    padding: 12px !important;
+
+    p,
+    li {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(0, 0, 0, 85%);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 16px auto;
+      border-radius: 2px;
+    }
+
+    ul,
+    ol {
+      padding-left: 2em;
+    }
+
+    blockquote {
+      border-left: 4px solid #ddd;
+      padding-left: 1em;
+      color: #666;
+      margin-left: 0;
+    }
+  }
+}
+
+// 表单样式
+.ant-form-item-label > label {
+  font-weight: 500;
+}
+
+// 标签选择器样式
+.ant-select-selection-item {
+  display: flex;
+  align-items: center;
+}
+
+// 上传按钮样式
+.ant-upload {
+  &.ant-upload-select {
+    display: block;
+  }
+}
